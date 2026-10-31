@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELORA | Pure Indulgence — Born from Nature. Crafted for You.</title>
+  <meta name="description" content="Cinematic journey of Velora luxury dark chocolate. Sourced from heirloom cacao plantations, crafted with artisanal mastery. Pure indulgence in every frame.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- Subtle Top Loading / Scroll Progress Bar -->
+  <div id="topProgressBar" class="top-progress-bar"></div>
+
+  <!-- FIXED FULL-SCREEN CANVAS STAGE (Always visible in background) -->
+  <div class="canvas-container" id="canvasContainer">
+    <canvas id="chocolateCanvas"></canvas>
+    <!-- Dynamic Atmosphere Glow & 35mm Micro-Grain -->
+    <div class="canvas-ambient-glow" id="canvasAmbientGlow"></div>
+    <div class="canvas-film-grain"></div>
+    <!-- Cinematic Lighting & Vignette Overlay -->
+    <div class="canvas-overlay"></div>
+    <!-- Floating Gold Dust / Ambient Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+  </div>
+
+  <!-- Luxury Minimal Header -->
+  <header id="siteHeader" class="site-header">
+    <div class="header-inner">
+      <a href="#hero" class="brand-logo" aria-label="Velora Home">
+        <span class="logo-crest">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 2L19.5 11H29L21.5 17L24.5 26L16 20.5L7.5 26L10.5 17L3 11H12.5L16 2Z" stroke="#D6AD65" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="logo-text">
+          <span class="logo-name">VELORA</span>
+          <span class="logo-sub">PURE INDULGENCE</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="mainNav">
+        <a href="#hero" class="nav-link active" data-target="hero">HOME</a>
+        <a href="#origin" class="nav-link" data-target="origin">OUR STORY</a>
+        <a href="#crafting" class="nav-link" data-target="crafting">CRAFTSMANSHIP</a>
+        <a href="#reveal" class="nav-link" data-target="reveal">PRODUCT</a>
+        <a href="#collection" class="nav-link" data-target="collection">COLLECTION</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="reserveBtn" class="cta-pill-btn">
+          <span>RESERVE BOX</span>
+        </button>
+        <button id="mobileMenuToggle" class="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Elegant Floating Chapter Indicator (Minimal, Pure Editorial) -->
+  <div class="chapter-hud" id="chapterHud">
+    <span class="hud-phase" id="hudPhase">CHAPTER 01 / 11</span>
+    <span class="hud-title" id="hudTitle">THE SANCTUARY</span>
+  </div>
+
+  <!-- MAIN SCROLL STORYTELLING TRACK (11 SECTIONS MAPPED TO ALL 50 FRAMES) -->
+  <main class="scroll-story-track" id="scrollTrack">
+
+    <!-- SECTION 01: HERO / BRAND INTRODUCTION (Frames 1-4) -->
+    <section class="story-section section-hero" id="hero" data-chapter="1" data-title="THE SANCTUARY">
+      <div class="story-card story-card-hero">
+        <div class="luxury-badge">
+          <span class="badge-line"></span>
+          <span class="badge-text">MAISON DE CHOCOLAT</span>
+          <span class="badge-line"></span>
+        </div>
+        <h1 class="hero-brand-title">VELORA</h1>
+        <p class="hero-brand-sub">PURE INDULGENCE</p>
+        <div class="gold-separator"></div>
+        <h2 class="hero-main-heading">
+          Not Just Chocolate.<br>
+          <span class="editorial-italic">An Experience of Pure Indulgence.</span>
+        </h2>
+        <p class="hero-tagline">"Born from Nature. Crafted for You."</p>
+
+        <div class="scroll-prompt">
+          <span class="scroll-mouse">
+            <span class="scroll-wheel"></span>
+          </span>
+          <span class="scroll-text">SCROLL TO DISCOVER</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02: THE ORIGIN (Frames 5-8) -->
+    <section class="story-section" id="origin" data-chapter="2" data-title="THE ORIGIN">
+      <div class="story-card card-left">
+        <div class="chapter-eyebrow">SECTION 02 &bull; THE ORIGIN</div>
+        <h2 class="section-heading">Every Great Chocolate<br><span class="accent-gold">Begins with Nature.</span></h2>
+        <p class="section-desc">
+          Our journey begins with carefully sourced cacao beans, selected for their natural quality and distinctive flavour.
+        </p>
+        <div class="feature-bullets">
+          <div class="bullet-item"><span class="bullet-star">✦</span> Carefully selected cacao</div>
+          <div class="bullet-item"><span class="bullet-star">✦</span> Natural ingredients</div>
+          <div class="bullet-item"><span class="bullet-star">✦</span> Responsible sourcing</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: HARVESTING (Frames 9-12) -->
+    <section class="story-section" id="harvest" data-chapter="3" data-title="HARVESTING">
+      <div class="story-card card-right">
+        <div class="chapter-eyebrow">SECTION 03 &bull; HARVESTING</div>
+        <h2 class="section-heading">Handpicked<br><span class="accent-gold">with Care.</span></h2>
+        <p class="section-desc">
+          Every cacao pod is carefully harvested at the right stage of ripeness to preserve its natural character.
+        </p>
+        <div class="stat-pills">
+          <div class="stat-item">
+            <span class="stat-big">100%</span>
+            <span class="stat-sub">Handpicked Pods</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-big">Peak</span>
+            <span class="stat-sub">Ripeness Selection</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: FERMENTATION AND DRYING (Frames 13-16) -->
+    <section class="story-section" id="fermentation" data-chapter="4" data-title="FERMENTATION & DRYING">
+      <div class="story-card card-left">
+        <div class="chapter-eyebrow">SECTION 04 &bull; FERMENTATION &amp; DRYING</div>
+        <h2 class="section-heading">Nature Creates<br><span class="accent-gold">the Flavour.</span></h2>
+        <p class="section-desc">
+          Carefully controlled fermentation and drying develop the aroma and flavour that define exceptional chocolate.
+        </p>
+        <div class="quote-border">
+          <p>"Sun-cured under mountain breezes to liberate the rich, complex floral notes of heirloom Criollo beans."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: ROASTING AND GRINDING (Frames 17-20) -->
+    <section class="story-section" id="roasting" data-chapter="5" data-title="ROASTING & GRINDING">
+      <div class="story-card card-right">
+        <div class="chapter-eyebrow">SECTION 05 &bull; ROASTING &amp; GRINDING</div>
+        <h2 class="section-heading">Where the<br><span class="accent-gold">Transformation Begins.</span></h2>
+        <p class="section-desc">
+          Selected cocoa beans are roasted and ground to release their rich cocoa character and create a smooth chocolate base.
+        </p>
+        <div class="spec-rows">
+          <div class="spec-row">
+            <span>Roasting Profile</span>
+            <strong class="gold-text">Gentle Convection</strong>
+          </div>
+          <div class="spec-row">
+            <span>Micron Fineness</span>
+            <strong class="gold-text">&lt; 18 Microns Silky</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: CHOCOLATE CRAFTING (Frames 21-25) -->
+    <section class="story-section" id="crafting" data-chapter="6" data-title="CHOCOLATE CRAFTING">
+      <div class="story-card card-center">
+        <div class="chapter-eyebrow">SECTION 06 &bull; CHOCOLATE CRAFTING</div>
+        <h2 class="section-heading">Precision<br><span class="accent-gold">Meets Passion.</span></h2>
+        <p class="section-desc">
+          Each stage is carefully controlled to create the smooth texture, rich taste and beautiful finish of Velora chocolate.
+        </p>
+        <div class="craft-badges">
+          <span class="craft-badge">Slow Conched 72 Hours</span>
+          <span class="craft-badge">Tempered at 31.5&deg;C</span>
+          <span class="craft-badge">Pure Cocoa Butter Viscosity</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 07: MOULDING AND COOLING (Frames 26-29) -->
+    <section class="story-section" id="moulding" data-chapter="7" data-title="MOULDING & COOLING">
+      <div class="story-card card-left">
+        <div class="chapter-eyebrow">SECTION 07 &bull; MOULDING &amp; COOLING</div>
+        <h2 class="section-heading">Perfected in<br><span class="accent-gold">Every Detail.</span></h2>
+        <p class="section-desc">
+          Carefully moulded and cooled to achieve the perfect shape, texture and glossy finish.
+        </p>
+        <div class="metric-block">
+          <div class="metric-label-val">
+            <span>Gloss Reflection Index</span>
+            <span class="gold-text">99.4%</span>
+          </div>
+          <div class="metric-meter"><div class="meter-inner" style="width: 99%;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 08: QUALITY CONTROL (Frames 30-34) -->
+    <section class="story-section" id="quality" data-chapter="8" data-title="QUALITY CONTROL">
+      <div class="story-card card-right">
+        <div class="chapter-eyebrow">SECTION 08 &bull; QUALITY CONTROL</div>
+        <h2 class="section-heading">Excellence Is<br><span class="accent-gold">Never an Accident.</span></h2>
+        <p class="section-desc">
+          Every chocolate bar passes through quality checks before it receives the Velora identity.
+        </p>
+        <div class="quality-badge">
+          <span class="quality-stars">&starf; &starf; &starf; &starf; &starf;</span>
+          <span class="quality-text">VELORA CERTIFIED MASTER GRADE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 09: PACKAGING MATERIALS (Frames 35-38) -->
+    <section class="story-section" id="materials" data-chapter="9" data-title="PACKAGING MATERIALS">
+      <div class="story-card card-left">
+        <div class="chapter-eyebrow">SECTION 09 &bull; PACKAGING MATERIALS</div>
+        <h2 class="section-heading">Designed to Protect.<br><span class="accent-gold">Created to Impress.</span></h2>
+        <p class="section-desc">
+          Thoughtfully designed packaging brings together product protection, presentation and the distinctive Velora identity.
+        </p>
+        <div class="feature-bullets">
+          <div class="bullet-item"><span class="bullet-star">✦</span> Imperial Purple Velvet Touch Box</div>
+          <div class="bullet-item"><span class="bullet-star">✦</span> Hot-Stamped Champagne Gold Foil</div>
+          <div class="bullet-item"><span class="bullet-star">✦</span> Hermetic Freshness Barrier</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: THE FINAL PACKAGING (Frames 39-44) -->
+    <section class="story-section" id="packaging" data-chapter="10" data-title="THE FINAL PACKAGING">
+      <div class="story-card card-right">
+        <div class="chapter-eyebrow">SECTION 10 &bull; THE FINAL PACKAGING</div>
+        <h2 class="section-heading">Wrapped in<br><span class="accent-gold">Elegance.</span></h2>
+        <p class="section-desc">
+          Every Velora chocolate is carefully wrapped and presented to preserve freshness and deliver a premium experience.
+        </p>
+        <div class="bespoke-quote">
+          <p>Preserving volatile cocoa aromas until your private moment of indulgence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: FINAL PRODUCT REVEAL (Frames 45-50) -->
+    <section class="story-section section-reveal" id="reveal" data-chapter="11" data-title="VELORA REVEAL">
+      <div class="story-card card-reveal">
+        <div class="reveal-brand-box">
+          <h2 class="reveal-title">VELORA</h2>
+          <h3 class="reveal-sub">PURE INDULGENCE</h3>
+          <div class="gold-separator"></div>
+          <p class="reveal-tagline">"Born from Nature. Crafted for You."</p>
+        </div>
+
+        <div class="reveal-details-grid">
+          <div class="detail-col">
+            <strong class="col-title">Single Estate Criollo</strong>
+            <p>Sourced from high-elevation agroforests</p>
+          </div>
+          <div class="detail-col">
+            <strong class="col-title">Velvet Dark Texture</strong>
+            <p>Acoustic snap and roasted cacao nibs</p>
+          </div>
+          <div class="detail-col">
+            <strong class="col-title">Imperial Purple Box</strong>
+            <p>Fine art presentation on dark marble</p>
+          </div>
+        </div>
+
+        <div class="reveal-cta-wrap">
+          <button id="openExperienceModalBtn" class="luxury-cta-btn">
+            <span>DISCOVER THE EXPERIENCE</span>
+            <span class="cta-arrow">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- POST-JOURNEY CURATED SECTIONS -->
+  
+  <!-- COLLECTION SECTION -->
+  <section id="collection" class="collection-section">
+    <div class="content-container">
+      <div class="section-header-centered">
+        <span class="section-kicker">THE TASTING PORTFOLIO</span>
+        <h2 class="editorial-title">The Velora Collection</h2>
+        <div class="gold-separator"></div>
+        <p class="section-lead">Three distinct expressions of pure single-origin indulgence, curated by master chocolatiers.</p>
+      </div>
+
+      <div class="collection-grid">
+        <!-- Card 1 -->
+        <article class="collection-card">
+          <div class="card-pill">85% NOIR</div>
+          <div class="card-details">
+            <span class="product-origin">Sambirano Valley &bull; Madagascar</span>
+            <h3 class="product-title">Noir Intemporel 85%</h3>
+            <p class="product-tasting">Notes of dried black cherries, cedar smoke, and wild forest honey. Intense yet astonishingly smooth.</p>
+            <button class="order-single-btn" data-product="Noir Intemporel 85%">Acquire &bull; $38</button>
+          </div>
+        </article>
+
+        <!-- Card 2 (Featured) -->
+        <article class="collection-card featured">
+          <div class="featured-badge">FLAGSHIP EDITION</div>
+          <div class="card-pill">72% AMANDE</div>
+          <div class="card-details">
+            <span class="product-origin">Chuao Estate &bull; Venezuela</span>
+            <h3 class="product-title">Royal Amande &amp; Sel 72%</h3>
+            <p class="product-tasting">Slow-roasted Valencia almonds, flaked Guérande sea salt, and caramelized Criollo cocoa nibs with bourbon vanilla.</p>
+            <button class="order-single-btn primary-btn" data-product="Royal Amande & Sel 72%">Acquire &bull; $42</button>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="collection-card">
+          <div class="card-pill">68% PRALINÉ</div>
+          <div class="card-details">
+            <span class="product-origin">Piura Blanco &bull; Peru</span>
+            <h3 class="product-title">Velvet Praliné d'Or 68%</h3>
+            <p class="product-tasting">Rare white cacao infused with roasted Piedmont hazelnuts, spun golden caramel, and silky cocoa butter.</p>
+            <button class="order-single-btn" data-product="Velvet Praliné d'Or 68%">Acquire &bull; $40</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TASTING RITUAL SECTION -->
+  <section class="ritual-section">
+    <div class="content-container">
+      <div class="section-header-centered">
+        <span class="section-kicker">ART OF APPRECIATION</span>
+        <h2 class="editorial-title">The Four-Step Tasting Ritual</h2>
+        <div class="gold-separator"></div>
+        <p class="section-lead">True indulgence is a mindful sensory ceremony. Allow Velora to awaken every perception.</p>
+      </div>
+
+      <div class="ritual-steps-grid">
+        <div class="ritual-card">
+          <span class="step-num">I</span>
+          <h3 class="step-title">The Visual Sheen</h3>
+          <p class="step-desc">Observe the satin gloss on the bar’s face, a testament to disciplined tempering at 31.5&deg;C.</p>
+        </div>
+        <div class="ritual-card">
+          <span class="step-num">II</span>
+          <h3 class="step-title">The Acoustic Snap</h3>
+          <p class="step-desc">Break the bar close to your ear. A clean, crisp fracture confirms optimal cocoa crystal lattice.</p>
+        </div>
+        <div class="ritual-card">
+          <span class="step-num">III</span>
+          <h3 class="step-title">The Terroir Bouquet</h3>
+          <p class="step-desc">Inhale gently. Warm volcanic soils, sun-dried pods, and subtle nuances of wild orchid emerge.</p>
+        </div>
+        <div class="ritual-card">
+          <span class="step-num">IV</span>
+          <h3 class="step-title">The 34&deg;C Melt</h3>
+          <p class="step-desc">Rest a piece on the tongue without chewing. Natural body heat dissolves the conched cocoa butter in silky harmony.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUXURY FOOTER -->
+  <footer class="site-footer">
+    <div class="content-container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand-column">
+          <div class="brand-logo footer-logo">
+            <span class="logo-name">VELORA</span>
+            <span class="logo-sub">PURE INDULGENCE</span>
+          </div>
+          <p class="footer-quote">
+            "Born from Nature. Crafted for You."
+          </p>
+          <p class="footer-mission">
+            Dedicated to the preservation of heirloom Criollo cacao varietals and fair partnerships with smallholder farming communities.
+          </p>
+        </div>
+
+        <div class="footer-nav-column">
+          <span class="footer-col-title">EXPERIENCE</span>
+          <ul>
+            <li><a href="#hero">The Overture</a></li>
+            <li><a href="#origin">Cacao Sourcing</a></li>
+            <li><a href="#crafting">Artisanal Conching</a></li>
+            <li><a href="#reveal">Product Reveal</a></li>
+            <li><a href="#collection">The Collection</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-column">
+          <span class="footer-col-title">SALONS &amp; BOUTIQUES</span>
+          <ul>
+            <li><span>Place Vend&ocirc;me, Paris</span></li>
+            <li><span>Bahnhofstrasse, Zurich</span></li>
+            <li><span>Ginza Six, Tokyo</span></li>
+            <li><span>Madison Avenue, New York</span></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter-column">
+          <span class="footer-col-title">PRIVATE ALLOCATIONS</span>
+          <p>Receive private invitations for small-batch seasonal harvests and exclusive collector caskets.</p>
+          <form id="newsletterForm" class="newsletter-form">
+            <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+            <button type="submit" class="newsletter-submit" aria-label="Subscribe">
+              <span>&rarr;</span>
+            </button>
+          </form>
+          <span id="newsletterMsg" class="newsletter-success hidden">You are now registered for private allocations.</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VELORA MAISON DE CHOCOLAT. All Rights Reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Charter</a>
+          <span class="divider">&bull;</span>
+          <a href="#">Terms of Indulgence</a>
+          <span class="divider">&bull;</span>
+          <a href="#">Ethical Cocoa Certificate</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE EXPERIENCE / RESERVATION MODAL -->
+  <div id="experienceModal" class="modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="modal-card">
+      <button id="closeModalBtn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
+      
+      <div class="modal-header">
+        <span class="modal-kicker">BESPOKE ATELIER</span>
+        <h2 class="modal-title">Configure Your Velora Box</h2>
+        <p class="modal-sub">Custom presentation in our signature royal purple &amp; champagne gold casket.</p>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-config-grid">
+          <!-- Left: Preview -->
+          <div class="modal-preview-col">
+            <div class="box-3d-mockup" id="boxMockup">
+              <div class="mockup-lid">
+                <span class="mockup-crest">V</span>
+                <span class="mockup-brand">VELORA</span>
+                <span class="mockup-sub">PURE INDULGENCE</span>
+                <span id="mockupMonogram" class="mockup-monogram">FOR A CONNOISSEUR</span>
+              </div>
+            </div>
+            <div class="mockup-badges">
+              <span>✦ Velvet Touch Box</span>
+              <span>✦ 24k Gold Foil</span>
+              <span>✦ Hermetic Freshness</span>
+            </div>
+          </div>
+
+          <!-- Right: Customizer Form -->
+          <div class="modal-form-col">
+            <div class="config-group">
+              <label class="config-label">1. SELECT YOUR SELECTION</label>
+              <div class="option-chips" id="assortmentChips">
+                <button type="button" class="chip active" data-value="trio">The Grand Trio (3 Bars)</button>
+                <button type="button" class="chip" data-value="noir">85% Noir Reserve (3 Bars)</button>
+                <button type="button" class="chip" data-value="amande">72% Royal Amande (3 Bars)</button>
+              </div>
+            </div>
+
+            <div class="config-group">
+              <label class="config-label" for="customMonogramInput">2. BESPOKE GOLD FOIL MONOGRAM (Optional)</label>
+              <input type="text" id="customMonogramInput" maxlength="24" placeholder="e.g. FOR ELIZABETH" class="luxury-input">
+              <span class="input-hint">Stamped by hand with gold foil leaf.</span>
+            </div>
+
+            <div class="config-group">
+              <label class="config-label" for="guestEmailInput">3. ALLOCATION RECIPIENT EMAIL</label>
+              <input type="email" id="guestEmailInput" placeholder="connoisseur@luxury.com" required class="luxury-input">
+            </div>
+
+            <div class="modal-pricing-summary">
+              <div class="summary-row">
+                <span>Curated Casket Allocation</span>
+                <span id="casketPrice">$120.00</span>
+              </div>
+              <div class="summary-row">
+                <span>Hand Monogram &amp; Gift Wrapping</span>
+                <span class="accent-gold">Complimentary</span>
+              </div>
+              <div class="summary-row total-row">
+                <span>Total Indulgence</span>
+                <span id="casketTotalPrice" class="accent-gold">$120.00</span>
+              </div>
+            </div>
+
+            <button id="confirmReservationBtn" class="reserve-confirm-btn">
+              <span>CONFIRM ALLOCATION RESERVATION</span>
+            </button>
+            <div id="reservationSuccess" class="reservation-success hidden">
+              <span class="check-icon">&check;</span>
+              <div>
+                <strong>Reservation Confirmed.</strong>
+                <p>Your allocation certificate has been dispatched to your email.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
