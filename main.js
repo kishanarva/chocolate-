@@ -3,26 +3,26 @@
  * High-Definition Razor-Sharp Canvas Scroll Engine
  */
 
-const TOTAL_FRAMES = 50;
+const TOTAL_FRAMES = 240;
 
 const getFrameSrc = (index) => {
   const padded = String(index).padStart(3, '0');
-  return `/choclate/ezgif-frame-${padded}.jpg`;
+  return `/frames/frame-${padded}.jpg`;
 };
 
-// 11 Storytelling Chapters mapped cleanly to video transitions
+// 11 Storytelling Chapters mapped cleanly to the 240 video frames
 const CHAPTERS = [
-  { id: 'hero', title: 'HERO INTRODUCTION', frameStart: 1, frameEnd: 6 },
-  { id: 'origin', title: 'THE ORIGIN', frameStart: 7, frameEnd: 10 },
-  { id: 'harvest', title: 'HANDPICKED HARVESTING', frameStart: 11, frameEnd: 13 },
-  { id: 'fermentation', title: 'FERMENTATION & DRYING', frameStart: 14, frameEnd: 17 },
-  { id: 'roasting', title: 'ROASTING & GRINDING', frameStart: 18, frameEnd: 21 },
-  { id: 'crafting', title: 'CHOCOLATE CRAFTING', frameStart: 22, frameEnd: 26 },
-  { id: 'moulding', title: 'MOULDING & COOLING', frameStart: 27, frameEnd: 29 },
-  { id: 'quality', title: 'QUALITY CONTROL', frameStart: 30, frameEnd: 34 },
-  { id: 'materials', title: 'PACKAGING MATERIALS', frameStart: 35, frameEnd: 39 },
-  { id: 'packaging', title: 'THE FINAL PACKAGING', frameStart: 40, frameEnd: 46 },
-  { id: 'reveal', title: 'VELORA REVEAL', frameStart: 47, frameEnd: 50 },
+  { id: 'hero', title: 'HERO INTRODUCTION', frameStart: 1, frameEnd: 24 },
+  { id: 'origin', title: 'THE ORIGIN', frameStart: 25, frameEnd: 48 },
+  { id: 'harvest', title: 'HANDPICKED HARVESTING', frameStart: 49, frameEnd: 68 },
+  { id: 'fermentation', title: 'FERMENTATION & DRYING', frameStart: 69, frameEnd: 88 },
+  { id: 'roasting', title: 'ROASTING & GRINDING', frameStart: 89, frameEnd: 108 },
+  { id: 'crafting', title: 'CHOCOLATE CRAFTING', frameStart: 109, frameEnd: 132 },
+  { id: 'moulding', title: 'MOULDING & COOLING', frameStart: 133, frameEnd: 154 },
+  { id: 'quality', title: 'QUALITY CONTROL', frameStart: 155, frameEnd: 179 },
+  { id: 'materials', title: 'PACKAGING MATERIALS', frameStart: 180, frameEnd: 200 },
+  { id: 'packaging', title: 'THE FINAL PACKAGING', frameStart: 201, frameEnd: 220 },
+  { id: 'reveal', title: 'VELORA REVEAL', frameStart: 221, frameEnd: 240 },
 ];
 
 class VeloraCinematicEngine {
@@ -93,37 +93,57 @@ class VeloraCinematicEngine {
       this.drawCrispFrame(1);
     };
     img1.onerror = () => {
-      img1.src = `./choclate/ezgif-frame-001.jpg`;
+      img1.src = `./frames/frame-001.jpg`;
     };
   }
 
-  // Preload all 50 frames into memory
+  // Progressive Two-Stage Preloader: keyframes first for instant scrolling, then full 240 frames
   preloadAllFrames() {
+    const keyframes = [];
+    for (let i = 1; i <= TOTAL_FRAMES; i += 4) {
+      keyframes.push(i);
+    }
+    const inBetweenFrames = [];
     for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      if (i % 4 !== 1) {
+        inBetweenFrames.push(i);
+      }
+    }
+
+    const loadFrame = (index) => {
+      if (this.frames[index]) return;
       const img = new Image();
-      img.src = getFrameSrc(i);
+      img.src = getFrameSrc(index);
 
       img.onload = () => {
-        this.frames[i] = img;
+        this.frames[index] = img;
         this.loadedCount++;
         const pct = Math.round((this.loadedCount / TOTAL_FRAMES) * 100);
         if (this.topProgressBar) {
           this.topProgressBar.style.width = `${pct}%`;
-          if (this.loadedCount === TOTAL_FRAMES) {
+          if (this.loadedCount >= TOTAL_FRAMES) {
             setTimeout(() => {
               this.topProgressBar.style.opacity = '0';
             }, 600);
           }
         }
-        if (this.lastDrawnFrame === -1 && i === 1) {
+        if (this.lastDrawnFrame === -1 && index === 1) {
           this.drawCrispFrame(1);
         }
       };
 
       img.onerror = () => {
-        img.src = `./choclate/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
+        img.src = `./frames/frame-${String(index).padStart(3, '0')}.jpg`;
       };
-    }
+    };
+
+    // Stage 1: Load 60 keyframes immediately
+    keyframes.forEach(k => loadFrame(k));
+
+    // Stage 2: Queue all remaining frames smoothly
+    setTimeout(() => {
+      inBetweenFrames.forEach(f => loadFrame(f));
+    }, 150);
   }
 
   getValidImage(index) {
@@ -422,6 +442,7 @@ class VeloraCinematicEngine {
     });
 
     this.setupModal();
+    this.setupCinemaFeatures();
 
     // Newsletter
     const newsletterForm = document.getElementById('newsletterForm');
@@ -523,6 +544,89 @@ class VeloraCinematicEngine {
         successMsg?.classList.remove('hidden');
       }, 700);
     });
+  }
+
+  setupCinemaFeatures() {
+    const cinemaModal = document.getElementById('cinemaModal');
+    const modalVideo = document.getElementById('modalCommercialVideo');
+    const inlineVideo = document.getElementById('inlineCommercialVideo');
+    const openFilmBtns = [
+      document.getElementById('watchFilmHeaderBtn'),
+      document.getElementById('watchFilmHeroBtn'),
+      document.getElementById('expandCinemaBtn'),
+    ];
+    const closeFilmBtn = document.getElementById('closeCinemaModalBtn');
+    const togglePlayBtn = document.getElementById('togglePlayBtn');
+    const toggleSoundBtn = document.getElementById('toggleSoundBtn');
+
+    const openCinema = () => {
+      if (!cinemaModal) return;
+      cinemaModal.classList.add('active');
+      cinemaModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (inlineVideo && !inlineVideo.paused) {
+        inlineVideo.pause();
+      }
+      if (modalVideo) {
+        modalVideo.currentTime = inlineVideo ? inlineVideo.currentTime : 0;
+        modalVideo.play().catch(() => {});
+      }
+    };
+
+    const closeCinema = () => {
+      if (!cinemaModal) return;
+      cinemaModal.classList.remove('active');
+      cinemaModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (modalVideo) {
+        modalVideo.pause();
+      }
+    };
+
+    openFilmBtns.forEach(btn => {
+      btn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openCinema();
+      });
+    });
+
+    closeFilmBtn?.addEventListener('click', closeCinema);
+
+    cinemaModal?.addEventListener('click', (e) => {
+      if (e.target === cinemaModal) closeCinema();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && cinemaModal?.classList.contains('active')) {
+        closeCinema();
+      }
+    });
+
+    // Inline video frame controls
+    if (togglePlayBtn && inlineVideo) {
+      togglePlayBtn.addEventListener('click', () => {
+        if (inlineVideo.paused) {
+          inlineVideo.play();
+          togglePlayBtn.innerHTML = '<span class="ctrl-icon-play">❚❚</span><span>PAUSE</span>';
+        } else {
+          inlineVideo.pause();
+          togglePlayBtn.innerHTML = '<span class="ctrl-icon-play">▶</span><span>PLAY</span>';
+        }
+      });
+    }
+
+    if (toggleSoundBtn && inlineVideo) {
+      toggleSoundBtn.addEventListener('click', () => {
+        inlineVideo.muted = !inlineVideo.muted;
+        if (inlineVideo.muted) {
+          toggleSoundBtn.innerHTML = '<span class="ctrl-icon-sound">🔇</span><span>MUTED</span>';
+          toggleSoundBtn.classList.remove('active');
+        } else {
+          toggleSoundBtn.innerHTML = '<span class="ctrl-icon-sound">🔊</span><span>SOUND ON</span>';
+          toggleSoundBtn.classList.add('active');
+        }
+      });
+    }
   }
 }
 

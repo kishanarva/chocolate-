@@ -53,6 +53,12 @@
       </nav>
 
       <div class="header-actions">
+        <button id="watchFilmHeaderBtn" class="cinema-pill-btn" aria-label="Watch Commercial Film">
+          <svg class="play-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <span>WATCH FILM</span>
+        </button>
         <button id="reserveBtn" class="cta-pill-btn">
           <span>RESERVE BOX</span>
         </button>
@@ -91,11 +97,25 @@
         </h2>
         <p class="hero-tagline">"Born from Nature. Crafted for You."</p>
 
+        <div class="hero-actions-row">
+          <button id="watchFilmHeroBtn" class="hero-film-btn" aria-label="Play 4K Commercial Video">
+            <span class="film-btn-crest">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </span>
+            <span class="film-btn-text">
+              <strong class="film-btn-title">PLAY COMMERCIAL FILM</strong>
+              <small class="film-btn-sub">Original Master &bull; Sound On</small>
+            </span>
+          </button>
+        </div>
+
         <div class="scroll-prompt">
           <span class="scroll-mouse">
             <span class="scroll-wheel"></span>
           </span>
-          <span class="scroll-text">SCROLL TO DISCOVER</span>
+          <span class="scroll-text">OR SCROLL TO DISCOVER</span>
         </div>
       </div>
     </section>
@@ -286,6 +306,49 @@
     </section>
 
   </main>
+
+  <!-- CINEMATIC COMMERCIAL SHOWCASE IN LUXURY GOLD FRAME -->
+  <section id="cinemaShowcase" class="cinema-showcase-section">
+    <div class="content-container">
+      <div class="section-header-centered">
+        <span class="section-kicker">CINEMATOGRAPHY</span>
+        <h2 class="editorial-title">The Master Commercial Film</h2>
+        <div class="gold-separator"></div>
+        <p class="section-lead">Experience the raw 4K motion picture — artisanal conching, glossy liquid swirls, and heirloom craftsmanship framed in pure luxury.</p>
+      </div>
+
+      <div class="cinema-frame-stage">
+        <div class="luxury-gold-frame">
+          <div class="frame-bevel-outer">
+            <div class="frame-bevel-inner">
+              <div class="video-container">
+                <video id="inlineCommercialVideo" src="./velora-commercial.mp4" playsinline loop muted autoplay preload="auto" poster="/frames/frame-001.jpg"></video>
+                <div class="video-frame-controls">
+                  <button id="togglePlayBtn" class="frame-ctrl-btn" aria-label="Play or Pause Commercial">
+                    <span class="ctrl-icon-play">❚❚</span>
+                    <span>PAUSE</span>
+                  </button>
+                  <button id="toggleSoundBtn" class="frame-ctrl-btn" aria-label="Toggle Sound">
+                    <span class="ctrl-icon-sound">🔇</span>
+                    <span>MUTED</span>
+                  </button>
+                  <button id="expandCinemaBtn" class="frame-ctrl-btn frame-ctrl-cinema" aria-label="Cinema Fullscreen View">
+                    <span>⛶ CINEMA VIEW</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Corner filigree accents -->
+          <div class="frame-corner top-left"></div>
+          <div class="frame-corner top-right"></div>
+          <div class="frame-corner bottom-left"></div>
+          <div class="frame-corner bottom-right"></div>
+        </div>
+        <div class="frame-ambient-reflection"></div>
+      </div>
+    </div>
+  </section>
 
   <!-- POST-JOURNEY CURATED SECTIONS -->
   
@@ -514,6 +577,21 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  <!-- CINEMA FILM MODAL (Ultra-High-Definition Master Commercial) -->
+  <div id="cinemaModal" class="modal-backdrop cinema-modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="cinema-modal-card">
+      <button id="closeCinemaModalBtn" class="modal-close-btn" aria-label="Close Film Modal">&times;</button>
+      <div class="cinema-modal-header">
+        <span class="modal-kicker">MASTER COMMERCIAL FILM</span>
+        <h3 class="cinema-modal-title">VELORA &bull; PURE INDULGENCE</h3>
+        <p class="cinema-modal-sub">Original High-Definition Commercial &bull; 4K Master Sound</p>
+      </div>
+      <div class="cinema-modal-body">
+        <div class="cinema-master-frame">
+          <video id="modalCommercialVideo" src="./velora-commercial.mp4" playsinline controls preload="auto"></video>
         </div>
       </div>
     </div>
